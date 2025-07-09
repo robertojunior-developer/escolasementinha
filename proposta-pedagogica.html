@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Pedagógica - Escola Sementinha</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para a página de proposta pedagógica */
+        .proposta-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 90px;
+        }
+        
+        .metodologia {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+        
+        .metodologia-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .metodologia-imagem img {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pilares-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pilar {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pilar:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pilar-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #A8D5BA;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .pilar-icon i {
+            font-size: 1.8rem;
+            color: #005F3C;
+        }
+        
+        .diferenciais {
+            background: linear-gradient(to bottom, #fff, #A8D5BA);
+            padding: 80px 0;
+        }
+        
+        .diferencial-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .diferencial-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #A8D5BA;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .diferencial-icon i {
+            font-size: 1.5rem;
+            color: #005F3C;
+        }
+        
+        .projetos {
+            padding: 80px 0;
+        }
+        
+        .projetos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .projeto {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .projeto:hover {
+            transform: translateY(-10px);
+        }
+        
+        .projeto-imagem {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .projeto-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .projeto:hover .projeto-imagem img {
+            transform: scale(1.1);
+        }
+        
+        .projeto-content {
+            padding: 20px;
+        }
+        
+        @media (max-width: 1024px) {
+            .pilares-container,
+            .projetos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .metodologia-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pilares-container,
+            .projetos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/sementinha-logo.png" alt="Logo Escola Sementinha">
+                </a>
+            </div>
+            <nav>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="proposta-pedagogica.html" class="active">Proposta Pedagógica</a></li>
+                    <li><a href="index.html#turmas">Turmas</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><a href="matriculas.html" class="btn-destaque">Matrículas Abertas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="proposta-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="animate-fade">Proposta Pedagógica</h1>
+                <p class="animate-fade">Educação transformadora para formar cidadãos do mundo</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metodologia -->
+    <section class="metodologia">
+        <div class="container">
+            <h2 class="section-title">Nossa Metodologia</h2>
+            <div class="metodologia-grid">
+                <div class="metodologia-texto">
+                    <p>Na Escola Sementinha, acreditamos que cada criança é única e possui um potencial ilimitado. Nossa metodologia é baseada em uma abordagem sociointeracionista, que valoriza a interação social e a construção coletiva do conhecimento.</p>
+                    <p>Trabalhamos com projetos interdisciplinares que estimulam a curiosidade, a criatividade e o pensamento crítico dos alunos. Nosso objetivo é formar cidadãos autônomos, responsáveis e preparados para os desafios do século XXI.</p>
+                    <p>Valorizamos o protagonismo infantil, permitindo que as crianças participem ativamente do processo de aprendizagem, fazendo escolhas e desenvolvendo sua autonomia.</p>
+                </div>
+                <div class="metodologia-imagem">
+                    <img src="images/metodologia.jpg" alt="Crianças em atividade pedagógica">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilares Pedagógicos -->
+    <section class="pilares">
+        <div class="container">
+            <h2 class="section-title">Pilares Pedagógicos</h2>
+            <div class="pilares-container">
+                <div class="pilar">
+                    <div class="pilar-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Desenvolvimento Cognitivo</h3>
+                    <p>Estimulamos o desenvolvimento das habilidades cognitivas através de atividades desafiadoras e lúdicas, respeitando o ritmo de cada criança.</p>
+                    <p>Trabalhamos com materiais concretos e situações-problema que incentivam o raciocínio lógico e a resolução de problemas.</p>
+                </div>
+                <div class="pilar">
+                    <div class="pilar-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Desenvolvimento Socioemocional</h3>
+                    <p>Valorizamos o desenvolvimento das habilidades socioemocionais, como empatia, resiliência, autoconhecimento e trabalho em equipe.</p>
+                    <p>Através de rodas de conversa e atividades colaborativas, ajudamos as crianças a reconhecerem e expressarem suas emoções de forma saudável.</p>
+                </div>
+                <div class="pilar">
+                    <div class="pilar-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <h3>Desenvolvimento Psicomotor</h3>
+                    <p>Promovemos atividades que estimulam o desenvolvimento motor, a coordenação, o equilíbrio e a consciência corporal.</p>
+                    <p>Nossas aulas de educação física e recreação são planejadas para desenvolver habilidades motoras de forma lúdica e prazerosa.</p>
+                </div>
+                <div class="pilar">
+                    <div class="pilar-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>Consciência Ambiental e Cidadania</h3>
+                    <p>Desenvolvemos projetos que promovem a consciência ambiental e o respeito à diversidade, formando cidadãos responsáveis e comprometidos com um mundo melhor.</p>
+                    <p>Incentivamos práticas sustentáveis e o respeito ao meio ambiente desde a primeira infância.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciais -->
+    <section class="diferenciais">
+        <div class="container">
+            <h2 class="section-title">Nossos Diferenciais</h2>
+            <div class="diferenciais-container">
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="diferencial-content">
+                        <h3>Turmas Reduzidas</h3>
+                        <p>Trabalhamos com turmas reduzidas para garantir um atendimento personalizado e de qualidade para cada aluno. Isso permite que nossos professores conheçam profundamente cada criança e suas necessidades específicas.</p>
+                    </div>
+                </div>
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="diferencial-content">
+                        <h3>Equipe Qualificada</h3>
+                        <p>Nossa equipe é formada por profissionais altamente qualificados, com formação específica em educação infantil e ensino fundamental. Todos os nossos professores participam de formação continuada para se manterem atualizados.</p>
+                    </div>
+                </div>
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <div class="diferencial-content">
+                        <h3>Projeto Literário</h3>
+                        <p>Desenvolvemos um projeto literário que incentiva o hábito da leitura desde cedo. Contamos com uma biblioteca infantil rica em títulos e realizamos atividades semanais de contação de histórias.</p>
+                    </div>
+                </div>
+                <div class="diferencial-item">
+                    <div class="diferencial-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div class="diferencial-content">
+                        <h3>Tecnologia Educacional</h3>
+                        <p>Integramos recursos tecnológicos ao processo de aprendizagem de forma consciente e equilibrada, preparando os alunos para os desafios do mundo digital sem abrir mão das interações presenciais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos Pedagógicos -->
+    <section class="projetos">
+        <div class="container">
+            <h2 class="section-title">Projetos Pedagógicos</h2>
+            <div class="projetos-grid">
+                <div class="projeto">
+                    <div class="projeto-imagem">
+                        <img src="images/projeto1.jpg" alt="Projeto Horta Escolar">
+                    </div>
+                    <div class="projeto-content">
+                        <h3>Horta Escolar</h3>
+                        <p>Os alunos participam do cultivo de uma horta orgânica, aprendendo sobre alimentação saudável, ciclo de vida das plantas e sustentabilidade.</p>
+                    </div>
+                </div>
+                <div class="projeto">
+                    <div class="projeto-imagem">
+                        <img src="images/projeto2.jpg" alt="Projeto Identidade e Cultura">
+                    </div>
+                    <div class="projeto-content">
+                        <h3>Identidade e Cultura</h3>
+                        <p>Projeto que valoriza a diversidade cultural brasileira, promovendo o respeito às diferenças e o conhecimento das tradições do nosso país.</p>
+                    </div>
+                </div>
+                <div class="projeto">
+                    <div class="projeto-imagem">
+                        <img src="images/projeto3.jpg" alt="Projeto Pequenos Cientistas">
+                    </div>
+                    <div class="projeto-content">
+                        <h3>Pequenos Cientistas</h3>
+                        <p>Através de experimentos simples e observações, as crianças são introduzidas ao método científico de forma lúdica e divertida.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avaliação -->
+    <section class="avaliacao">
+        <div class="container">
+            <h2 class="section-title">Processo de Avaliação</h2>
+            <div class="row">
+                <div class="col">
+                    <p>Na Escola Sementinha, a avaliação é vista como um processo contínuo e formativo, que busca acompanhar o desenvolvimento integral da criança em seus diversos aspectos: cognitivo, social, emocional e motor.</p>
+                    <p>Utilizamos diferentes instrumentos avaliativos, como observação diária, registros, portfólios e relatórios descritivos, que permitem uma visão ampla do progresso de cada aluno.</p>
+                    <p>Acreditamos que a avaliação deve servir como um diagnóstico para orientar o trabalho pedagógico, identificando avanços e dificuldades, e não como um instrumento classificatório ou excludente.</p>
+                    <p>As famílias recebem relatórios semestrais detalhados sobre o desenvolvimento dos alunos e participam de reuniões individuais com os professores para acompanhar o processo de aprendizagem.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <img src="images/sementinha-logo.png" alt="Logo Escola Sementinha" class="footer-logo">
+                    <p>Rua das Flores, 123 - Jardim Primavera<br>
+                    Rio de Janeiro - RJ, CEP: 22000-000</p>
+                    <p>Telefone: (21) 3333-4444<br>
+                    E-mail: contato@escolasementinha.com.br</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Siga-nos</h3>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                        <li><a href="proposta-pedagogica.html">Proposta Pedagógica</a></li>
+                        <li><a href="index.html#turmas">Turmas</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Escola Sementinha – Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

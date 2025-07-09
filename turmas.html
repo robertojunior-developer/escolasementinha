@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossas Turmas - Escola Sementinha</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para a página de turmas */
+        .turmas-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 90px;
+        }
+        
+        .turma-detalhes {
+            padding: 80px 0;
+        }
+        
+        .turma-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .turma-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .turma-header {
+            background-color: #005F3C;
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .turma-icon {
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        
+        .turma-icon i {
+            font-size: 2rem;
+            color: #005F3C;
+        }
+        
+        .turma-content {
+            padding: 30px;
+        }
+        
+        .turma-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-item i {
+            color: #005F3C;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .atividades-lista {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .atividades-lista li {
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .atividades-lista li:before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: #005F3C;
+        }
+        
+        .galeria {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+        }
+        
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .galeria-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+        }
+        
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 1024px) {
+            .turma-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .galeria-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .turma-info,
+            .atividades-lista {
+                grid-template-columns: 1fr;
+            }
+            
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/sementinha-logo.png" alt="Logo Escola Sementinha">
+                </a>
+            </div>
+            <nav>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="proposta-pedagogica.html">Proposta Pedagógica</a></li>
+                    <li><a href="turmas.html" class="active">Turmas</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><a href="matriculas.html" class="btn-destaque">Matrículas Abertas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="turmas-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="animate-fade">Nossas Turmas</h1>
+                <p class="animate-fade">Conheça os detalhes de cada turma da Escola Sementinha</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Turmas Detalhes -->
+    <section class="turma-detalhes">
+        <div class="container">
+            <h2 class="section-title">Educação Infantil</h2>
+            
+            <!-- Maternal I -->
+            <div class="turma-card">
+                <div class="turma-header">
+                    <div class="turma-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div>
+                        <h3>Maternal I</h3>
+                        <p>2 a 3 anos</p>
+                    </div>
+                </div>
+                <div class="turma-content">
+                    <div class="turma-info">
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>Número de Alunos:</strong>
+                                <p>Máximo 12 alunos</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Horário:</strong>
+                                <p>Manhã: 8h às 12h</p>
+                                <p>Tarde: 13h às 17h</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <div>
+                                <strong>Equipe:</strong>
+                                <p>1 professora e 1 auxiliar</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Sobre a Turma</h4>
+                    <p>No Maternal I, as crianças iniciam sua jornada escolar em um ambiente acolhedor e estimulante. O foco está no desenvolvimento da autonomia, socialização e habilidades motoras básicas.</p>
+                    <p>As atividades são lúdicas e sensoriais, respeitando o tempo e as características de cada criança.</p>
+                    
+                    <h4>Principais Atividades</h4>
+                    <ul class="atividades-lista">
+                        <li>Brincadeiras dirigidas e livres</li>
+                        <li>Contação de histórias</li>
+                        <li>Atividades de coordenação motora</li>
+                        <li>Músicas e cantigas</li>
+                        <li>Atividades sensoriais</li>
+                        <li>Iniciação à socialização</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Maternal II -->
+            <div class="turma-card">
+                <div class="turma-header">
+                    <div class="turma-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div>
+                        <h3>Maternal II</h3>
+                        <p>3 a 4 anos</p>
+                    </div>
+                </div>
+                <div class="turma-content">
+                    <div class="turma-info">
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>Número de Alunos:</strong>
+                                <p>Máximo 15 alunos</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Horário:</strong>
+                                <p>Manhã: 8h às 12h</p>
+                                <p>Tarde: 13h às 17h</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <div>
+                                <strong>Equipe:</strong>
+                                <p>1 professora e 1 auxiliar</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Sobre a Turma</h4>
+                    <p>No Maternal II, as crianças ampliam suas habilidades sociais e motoras, desenvolvendo maior independência e capacidade de expressão. O trabalho pedagógico estimula a curiosidade e a criatividade.</p>
+                    <p>As atividades são planejadas para desenvolver a linguagem oral, a coordenação motora fina e a percepção visual.</p>
+                    
+                    <h4>Principais Atividades</h4>
+                    <ul class="atividades-lista">
+                        <li>Jogos cooperativos</li>
+                        <li>Atividades de linguagem oral</li>
+                        <li>Iniciação às cores e formas</li>
+                        <li>Expressão artística</li>
+                        <li>Psicomotricidade</li>
+                        <li>Iniciação musical</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Jardim I -->
+            <div class="turma-card">
+                <div class="turma-header">
+                    <div class="turma-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div>
+                        <h3>Jardim I</h3>
+                        <p>4 a 5 anos</p>
+                    </div>
+                </div>
+                <div class="turma-content">
+                    <div class="turma-info">
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>Número de Alunos:</strong>
+                                <p>Máximo 18 alunos</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Horário:</strong>
+                                <p>Manhã: 8h às 12h</p>
+                                <p>Tarde: 13h às 17h</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <div>
+                                <strong>Equipe:</strong>
+                                <p>1 professora e 1 auxiliar</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Sobre a Turma</h4>
+                    <p>No Jardim I, as crianças são introduzidas a conceitos mais estruturados, preparando-as para a alfabetização. O trabalho pedagógico estimula o desenvolvimento da consciência fonológica e o reconhecimento de letras e números.</p>
+                    <p>As atividades são planejadas para desenvolver habilidades pré-alfabetização de forma lúdica e contextualizada.</p>
+                    
+                    <h4>Principais Atividades</h4>
+                    <ul class="atividades-lista">
+                        <li>Iniciação à escrita</li>
+                        <li>Reconhecimento de letras e números</li>
+                        <li>Jogos matemáticos</li>
+                        <li>Atividades de consciência fonológica</li>
+                        <li>Artes visuais</li>
+                        <li>Iniciação ao inglês</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Ensino Fundamental I</h2>
+            
+            <!-- 1º ao 5º Ano -->
+            <div class="turma-card">
+                <div class="turma-header">
+                    <div class="turma-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div>
+                        <h3>1º ao 5º Ano</h3>
+                        <p>6 a 10 anos</p>
+                    </div>
+                </div>
+                <div class="turma-content">
+                    <div class="turma-info">
+                        <div class="info-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <strong>Número de Alunos:</strong>
+                                <p>Máximo 20 alunos por turma</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Horário:</strong>
+                                <p>Manhã: 7:30h às 12h</p>
+                                <p>Tarde: 13h às 17:30h</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <div>
+                                <strong>Equipe:</strong>
+                                <p>Professor regente e professores especialistas</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h4>Sobre as Turmas</h4>
+                    <p>No Ensino Fundamental I, os alunos desenvolvem as habilidades de leitura, escrita, raciocínio lógico-matemático e conhecimentos nas diversas áreas do saber. O trabalho pedagógico é baseado em projetos interdisciplinares que estimulam a pesquisa e a resolução de problemas.</p>
+                    <p>As turmas contam com professores especialistas para as disciplinas de Inglês, Educação Física, Artes e Música.</p>
+                    
+                    <h4>Disciplinas</h4>
+                    <ul class="atividades-lista">
+                        <li>Língua Portuguesa</li>
+                        <li>Matemática</li>
+                        <li>Ciências</li>
+                        <li>História e Geografia</li>
+                        <li>Inglês</li>
+                        <li>Educação Física</li>
+                        <li>Artes</li>
+                        <li>Música</li>
+                        <li>Informática Educativa</li>
+                        <li>Projeto de Leitura</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section class="galeria">
+        <div class="container">
+            <h2 class="section-title">Galeria de Fotos</h2>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img src="images/galeria1.jpg" alt="Crianças em atividade na sala de aula">
+                </div>
+                <div class="galeria-item">
+                    <img src="images/galeria2.jpg" alt="Crianças brincando no parquinho">
+                </div>
+                <div class="galeria-item">
+                    <img src="images/galeria3.jpg" alt="Atividade de artes">
+                </div>
+                <div class="galeria-item">
+                    <img src="images/galeria4.jpg" alt="Aula de música">
+                </div>
+                <div class="galeria-item">
+                    <img src="images/galeria5.jpg" alt="Hora da leitura">
+                </div>
+                <div class="galeria-item">
+                    <img src="images/galeria6.jpg" alt="Atividade ao ar livre">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <img src="images/sementinha-logo.png" alt="Logo Escola Sementinha" class="footer-logo">
+                    <p>Rua das Flores, 123 - Jardim Primavera<br>
+                    Rio de Janeiro - RJ, CEP: 22000-000</p>
+                    <p>Telefone: (21) 3333-4444<br>
+                    E-mail: contato@escolasementinha.com.br</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Siga-nos</h3>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                        <li><a href="proposta-pedagogica.html">Proposta Pedagógica</a></li>
+                        <li><a href="turmas.html">Turmas</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Escola Sementinha – Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

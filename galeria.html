@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos - Escola Sementinha</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <style>
+        /* Estilos específicos para a página de galeria */
+        .galeria-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/banner.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 90px;
+        }
+        
+        .galeria-container {
+            padding: 80px 0;
+        }
+        
+        .galeria-filtros {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .filtro-btn {
+            padding: 8px 20px;
+            margin: 5px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .filtro-btn:hover {
+            background-color: #A8D5BA;
+            color: #005F3C;
+        }
+        
+        .filtro-btn.active {
+            background-color: #005F3C;
+            color: white;
+        }
+        
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .galeria-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 250px;
+            transition: all 0.3s ease;
+        }
+        
+        .galeria-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .galeria-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 95, 60, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .galeria-item:hover .galeria-overlay {
+            opacity: 1;
+        }
+        
+        .galeria-overlay h3 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .galeria-overlay p {
+            color: white;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .galeria-overlay .view-btn {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: white;
+            color: #005F3C;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .galeria-overlay .view-btn:hover {
+            background-color: #A8D5BA;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border-radius: 5px;
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover {
+            background-color: #A8D5BA;
+            color: #005F3C;
+        }
+        
+        .pagination a.active {
+            background-color: #005F3C;
+            color: white;
+        }
+        
+        /* Lightbox customização */
+        .lb-data .lb-caption {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .lb-data .lb-details {
+            width: 100%;
+            text-align: center;
+        }
+        
+        @media (max-width: 1024px) {
+            .galeria-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .galeria-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .galeria-item {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/sementinha-logo.png" alt="Logo Escola Sementinha">
+                </a>
+            </div>
+            <nav>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="proposta-pedagogica.html">Proposta Pedagógica</a></li>
+                    <li><a href="turmas.html">Turmas</a></li>
+                    <li><a href="galeria.html" class="active">Galeria</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><a href="matriculas.html" class="btn-destaque">Matrículas Abertas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="galeria-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="animate-fade">Galeria de Fotos</h1>
+                <p class="animate-fade">Momentos especiais da nossa escola</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria Content -->
+    <section class="galeria-container">
+        <div class="container">
+            <h2 class="section-title">Nossos Momentos</h2>
+            <p class="text-center">Confira os momentos especiais e atividades realizadas na Escola Sementinha</p>
+            
+            <div class="galeria-filtros">
+                <button class="filtro-btn active" data-filter="todos">Todos</button>
+                <button class="filtro-btn" data-filter="eventos">Eventos</button>
+                <button class="filtro-btn" data-filter="atividades">Atividades</button>
+                <button class="filtro-btn" data-filter="projetos">Projetos</button>
+                <button class="filtro-btn" data-filter="passeios">Passeios</button>
+                <button class="filtro-btn" data-filter="infraestrutura">Infraestrutura</button>
+            </div>
+            
+            <div class="galeria-grid">
+                <!-- Eventos -->
+                <div class="galeria-item" data-categoria="eventos">
+                    <img src="images/galeria1.jpg" alt="Festa Junina">
+                    <div class="galeria-overlay">
+                        <h3>Festa Junina</h3>
+                        <p>Nossa tradicional festa junina com danças, brincadeiras e comidas típicas</p>
+                        <a href="images/galeria1.jpg" class="view-btn" data-lightbox="galeria" data-title="Festa Junina - Nossa tradicional festa junina com danças, brincadeiras e comidas típicas">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="eventos">
+                    <img src="images/galeria2.jpg" alt="Formatura Jardim II">
+                    <div class="galeria-overlay">
+                        <h3>Formatura Jardim II</h3>
+                        <p>Cerimônia de formatura dos alunos do Jardim II</p>
+                        <a href="images/galeria2.jpg" class="view-btn" data-lightbox="galeria" data-title="Formatura Jardim II - Cerimônia de formatura dos alunos do Jardim II">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="eventos">
+                    <img src="images/galeria3.jpg" alt="Feira de Ciências">
+                    <div class="galeria-overlay">
+                        <h3>Feira de Ciências</h3>
+                        <p>Alunos apresentando seus projetos na Feira de Ciências</p>
+                        <a href="images/galeria3.jpg" class="view-btn" data-lightbox="galeria" data-title="Feira de Ciências - Alunos apresentando seus projetos na Feira de Ciências">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <!-- Atividades -->
+                <div class="galeria-item" data-categoria="atividades">
+                    <img src="images/galeria4.jpg" alt="Aula de Artes">
+                    <div class="galeria-overlay">
+                        <h3>Aula de Artes</h3>
+                        <p>Crianças desenvolvendo sua criatividade na aula de artes</p>
+                        <a href="images/galeria4.jpg" class="view-btn" data-lightbox="galeria" data-title="Aula de Artes - Crianças desenvolvendo sua criatividade na aula de artes">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="atividades">
+                    <img src="images/galeria5.jpg" alt="Hora da Leitura">
+                    <div class="galeria-overlay">
+                        <h3>Hora da Leitura</h3>
+                        <p>Momento especial de leitura e contação de histórias</p>
+                        <a href="images/galeria5.jpg" class="view-btn" data-lightbox="galeria" data-title="Hora da Leitura - Momento especial de leitura e contação de histórias">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="atividades">
+                    <img src="images/galeria6.jpg" alt="Educação Física">
+                    <div class="galeria-overlay">
+                        <h3>Educação Física</h3>
+                        <p>Atividades físicas e brincadeiras dirigidas</p>
+                        <a href="images/galeria6.jpg" class="view-btn" data-lightbox="galeria" data-title="Educação Física - Atividades físicas e brincadeiras dirigidas">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <!-- Projetos -->
+                <div class="galeria-item" data-categoria="projetos">
+                    <img src="images/galeria7.jpg" alt="Projeto Horta">
+                    <div class="galeria-overlay">
+                        <h3>Projeto Horta</h3>
+                        <p>Alunos cuidando da horta escolar e aprendendo sobre alimentação saudável</p>
+                        <a href="images/galeria7.jpg" class="view-btn" data-lightbox="galeria" data-title="Projeto Horta - Alunos cuidando da horta escolar e aprendendo sobre alimentação saudável">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="projetos">
+                    <img src="images/galeria8.jpg" alt="Projeto Reciclagem">
+                    <div class="galeria-overlay">
+                        <h3>Projeto Reciclagem</h3>
+                        <p>Atividades de conscientização ambiental e reciclagem</p>
+                        <a href="images/galeria8.jpg" class="view-btn" data-lightbox="galeria" data-title="Projeto Reciclagem - Atividades de conscientização ambiental e reciclagem">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="projetos">
+                    <img src="images/galeria9.jpg" alt="Projeto Música">
+                    <div class="galeria-overlay">
+                        <h3>Projeto Música</h3>
+                        <p>Aulas de música e apresentação do coral da escola</p>
+                        <a href="images/galeria9.jpg" class="view-btn" data-lightbox="galeria" data-title="Projeto Música - Aulas de música e apresentação do coral da escola">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <!-- Passeios -->
+                <div class="galeria-item" data-categoria="passeios">
+                    <img src="images/galeria10.jpg" alt="Visita ao Zoológico">
+                    <div class="galeria-overlay">
+                        <h3>Visita ao Zoológico</h3>
+                        <p>Passeio educativo ao zoológico da cidade</p>
+                        <a href="images/galeria10.jpg" class="view-btn" data-lightbox="galeria" data-title="Visita ao Zoológico - Passeio educativo ao zoológico da cidade">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="passeios">
+                    <img src="images/galeria11.jpg" alt="Visita ao Museu">
+                    <div class="galeria-overlay">
+                        <h3>Visita ao Museu</h3>
+                        <p>Explorando o museu de ciências e tecnologia</p>
+                        <a href="images/galeria11.jpg" class="view-btn" data-lightbox="galeria" data-title="Visita ao Museu - Explorando o museu de ciências e tecnologia">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="passeios">
+                    <img src="images/galeria12.jpg" alt="Piquenique no Parque">
+                    <div class="galeria-overlay">
+                        <h3>Piquenique no Parque</h3>
+                        <p>Momento de lazer e integração com a natureza</p>
+                        <a href="images/galeria12.jpg" class="view-btn" data-lightbox="galeria" data-title="Piquenique no Parque - Momento de lazer e integração com a natureza">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <!-- Infraestrutura -->
+                <div class="galeria-item" data-categoria="infraestrutura">
+                    <img src="images/galeria13.jpg" alt="Sala de Aula">
+                    <div class="galeria-overlay">
+                        <h3>Sala de Aula</h3>
+                        <p>Ambiente acolhedor e estimulante para aprendizagem</p>
+                        <a href="images/galeria13.jpg" class="view-btn" data-lightbox="galeria" data-title="Sala de Aula - Ambiente acolhedor e estimulante para aprendizagem">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="infraestrutura">
+                    <img src="images/galeria14.jpg" alt="Parquinho">
+                    <div class="galeria-overlay">
+                        <h3>Parquinho</h3>
+                        <p>Espaço recreativo com brinquedos seguros e divertidos</p>
+                        <a href="images/galeria14.jpg" class="view-btn" data-lightbox="galeria" data-title="Parquinho - Espaço recreativo com brinquedos seguros e divertidos">Ver Foto</a>
+                    </div>
+                </div>
+                
+                <div class="galeria-item" data-categoria="infraestrutura">
+                    <img src="images/galeria15.jpg" alt="Biblioteca">
+                    <div class="galeria-overlay">
+                        <h3>Biblioteca</h3>
+                        <p>Espaço de leitura com acervo diversificado</p>
+                        <a href="images/galeria15.jpg" class="view-btn" data-lightbox="galeria" data-title="Biblioteca - Espaço de leitura com acervo diversificado">Ver Foto</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <img src="images/sementinha-logo.png" alt="Logo Escola Sementinha" class="footer-logo">
+                    <p>Rua das Flores, 123 - Jardim Primavera<br>
+                    Rio de Janeiro - RJ, CEP: 22000-000</p>
+                    <p>Telefone: (21) 3333-4444<br>
+                    E-mail: contato@escolasementinha.com.br</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Siga-nos</h3>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                        <li><a href="proposta-pedagogica.html">Proposta Pedagógica</a></li>
+                        <li><a href="turmas.html">Turmas</a></li>
+                        <li><a href="galeria.html">Galeria</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Escola Sementinha – Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuração do Lightbox
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'albumLabel': "Imagem %1 de %2"
+            });
+            
+            // Filtro de categorias
+            const filtrosBtns = document.querySelectorAll('.filtro-btn');
+            const galeriaItems = document.querySelectorAll('.galeria-item');
+            
+            filtrosBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remover classe active de todos os botões
+                    filtrosBtns.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Adicionar classe active ao botão clicado
+                    this.classList.add('active');
+                    
+                    // Filtrar itens
+                    const filtro = this.getAttribute('data-filter');
+                    
+                    galeriaItems.forEach(item => {
+                        if (filtro === 'todos') {
+                            item.classList.remove('hidden');
+                        } else {
+                            if (item.getAttribute('data-categoria') === filtro) {
+                                item.classList.remove('hidden');
+                            } else {
+                                item.classList.add('hidden');
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

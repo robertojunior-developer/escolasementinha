@@ -1,0 +1,6 @@
+Este é um arquivo de placeholder para sobre.jpg.
+
+Em um ambiente de produção, você deve substituir este arquivo por uma imagem real de alta qualidade.
+Recomendação para a imagem da seção Sobre: uma imagem de crianças em sala de aula ou em atividades educativas.
+
+Dimensões recomendadas: 800x600px

@@ -1,0 +1,6 @@
+Este é um arquivo de placeholder para o banner.jpg.
+
+Em um ambiente de produção, você deve substituir este arquivo por uma imagem real de alta qualidade.
+Recomendação para o banner: uma imagem de crianças em ambiente escolar, sorrindo e aprendendo.
+
+Dimensões recomendadas: 1920x1080px

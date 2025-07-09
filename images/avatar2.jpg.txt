@@ -1,0 +1,6 @@
+Este é um arquivo de placeholder para avatar2.jpg.
+
+Em um ambiente de produção, você deve substituir este arquivo por uma foto real de um pai/mãe para o depoimento.
+Recomenda-se uma foto em formato quadrado, com o rosto centralizado.
+
+Dimensões recomendadas: 150x150px

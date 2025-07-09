@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feira de Ciências 2025: Pequenos Cientistas em Ação - Escola Sementinha</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos específicos para a página de post */
+        .post-header {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/blog-post1.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 90px;
+        }
+        
+        .post-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .post-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .post-meta i {
+            color: #005F3C;
+            margin-right: 5px;
+        }
+        
+        .post-meta span {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .post-content {
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .post-content p {
+            margin-bottom: 20px;
+        }
+        
+        .post-content h2 {
+            margin: 40px 0 20px;
+            color: #005F3C;
+        }
+        
+        .post-content h3 {
+            margin: 30px 0 15px;
+            color: #005F3C;
+        }
+        
+        .post-content img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .post-content ul, 
+        .post-content ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .post-content li {
+            margin-bottom: 10px;
+        }
+        
+        .post-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .post-tags {
+            margin-top: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .post-tag {
+            padding: 5px 12px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .post-tag:hover {
+            background-color: #A8D5BA;
+            color: #005F3C;
+        }
+        
+        .post-share {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .share-title {
+            margin-right: 15px;
+            font-weight: 600;
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .share-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .share-button:hover {
+            transform: translateY(-3px);
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .whatsapp {
+            background-color: #25d366;
+        }
+        
+        .linkedin {
+            background-color: #0077b5;
+        }
+        
+        .author-box {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 20px;
+        }
+        
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin: 0;
+        }
+        
+        .author-info h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #005F3C;
+        }
+        
+        .related-posts {
+            margin-top: 60px;
+        }
+        
+        .related-posts h2 {
+            margin-bottom: 30px;
+            color: #005F3C;
+            text-align: center;
+        }
+        
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .related-post {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .related-post:hover {
+            transform: translateY(-10px);
+        }
+        
+        .related-post-image {
+            height: 150px;
+            overflow: hidden;
+        }
+        
+        .related-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            margin: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .related-post:hover .related-post-image img {
+            transform: scale(1.1);
+        }
+        
+        .related-post-content {
+            padding: 15px;
+        }
+        
+        .related-post-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .related-post-title a {
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .related-post-title a:hover {
+            color: #005F3C;
+        }
+        
+        .related-post-date {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .post-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .related-posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .author-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .author-image {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/sementinha-logo.png" alt="Logo Escola Sementinha">
+                </a>
+            </div>
+            <nav>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#sobre">Sobre</a></li>
+                    <li><a href="proposta-pedagogica.html">Proposta Pedagógica</a></li>
+                    <li><a href="turmas.html">Turmas</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="index.html#contato">Contato</a></li>
+                    <li><a href="matriculas.html" class="btn-destaque">Matrículas Abertas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Post Header -->
+    <section class="post-header">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="animate-fade">Feira de Ciências 2025: Pequenos Cientistas em Ação</h1>
+                <p class="animate-fade">Um evento de descobertas e aprendizado</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Content -->
+    <article class="post-container">
+        <div class="post-meta">
+            <span><i class="far fa-calendar"></i> 15 de Maio, 2025</span>
+            <span><i class="far fa-user"></i> Equipe Pedagógica</span>
+            <span><i class="far fa-folder"></i> Eventos</span>
+            <span><i class="far fa-comment"></i> 8 Comentários</span>
+        </div>
+        
+        <div class="post-content">
+            <p>Nossa Feira de Ciências anual foi um grande sucesso! Realizada no último sábado, dia 10 de maio, o evento reuniu alunos, professores, familiares e toda a comunidade escolar em uma celebração do conhecimento científico e da criatividade dos nossos pequenos cientistas.</p>
+            
+            <p>Este ano, o tema central da feira foi "Sustentabilidade e Inovação", e nossos alunos surpreenderam a todos com projetos incríveis que demonstraram não apenas compreensão dos conceitos científicos, mas também preocupação com o futuro do planeta.</p>
+            
+            <img src="images/feira-ciencias1.jpg" alt="Visão geral da Feira de Ciências">
+            
+            <h2>Destaques da Feira</h2>
+            
+            <p>Entre os diversos projetos apresentados, alguns se destacaram pela criatividade, rigor científico e impacto social:</p>
+            
+            <h3>Turma do Jardim II - Horta Vertical Sustentável</h3>
+            <p>Os alunos do Jardim II desenvolveram uma horta vertical utilizando garrafas PET recicladas. Eles explicaram todo o processo de plantio, cuidados com as plantas e a importância de reaproveitar materiais. O projeto incluiu um sistema de irrigação por gotejamento que economiza água.</p>
+            
+            <h3>Turma do 2º Ano - Filtro de Água Caseiro</h3>
+            <p>Os alunos do 2º ano apresentaram um filtro de água caseiro feito com materiais acessíveis como areia, carvão e algodão. Eles demonstraram como a água suja passa pelo filtro e sai mais limpa, explicando cada camada do filtro e sua função na purificação.</p>
+            
+            <h3>Turma do 4º Ano - Gerador de Energia Eólica</h3>
+            <p>O projeto mais votado pelo público foi o gerador de energia eólica criado pelos alunos do 4º ano. Utilizando materiais reciclados, eles construíram uma pequena turbina eólica capaz de gerar energia suficiente para acender um LED. A apresentação incluiu explicações sobre energia renovável e sua importância para o futuro.</p>
+            
+            <div class="post-gallery">
+                <div class="gallery-item">
+                    <img src="images/feira-ciencias2.jpg" alt="Projeto Horta Vertical">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/feira-ciencias3.jpg" alt="Projeto Filtro de Água">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/feira-ciencias4.jpg" alt="Projeto Gerador Eólico">
+                </div>
+            </div>
+            
+            <h2>Processo de Aprendizagem</h2>
+            
+            <p>A Feira de Ciências não é apenas um evento de apresentação, mas o resultado de um processo de aprendizagem que durou várias semanas. Durante esse período, os alunos:</p>
+            
+            <ul>
+                <li>Pesquisaram sobre temas relacionados à sustentabilidade</li>
+                <li>Formularam hipóteses e realizaram experimentos</li>
+                <li>Registraram observações e resultados</li>
+                <li>Trabalharam em equipe, dividindo responsabilidades</li>
+                <li>Desenvolveram habilidades de comunicação para apresentar seus projetos</li>
+            </ul>
+            
+            <p>Este processo permitiu que os alunos vivenciassem o método científico na prática, desenvolvendo habilidades essenciais como pensamento crítico, resolução de problemas e trabalho colaborativo.</p>
+            
+            <h2>Premiação</h2>
+            
+            <p>Todos os participantes receberam certificados, mas alguns projetos foram premiados em categorias especiais:</p>
+            
+            <ul>
+                <li><strong>Melhor Projeto Científico:</strong> Gerador de Energia Eólica (4º Ano)</li>
+                <li><strong>Projeto Mais Criativo:</strong> Terrário Autossustentável (3º Ano)</li>
+                <li><strong>Melhor Apresentação:</strong> Horta Vertical Sustentável (Jardim II)</li>
+                <li><strong>Projeto com Maior Impacto Social:</strong> Filtro de Água Caseiro (2º Ano)</li>
+            </ul>
+            
+            <img src="images/feira-ciencias5.jpg" alt="Cerimônia de premiação">
+            
+            <h2>Agradecimentos</h2>
+            
+            <p>Gostaríamos de agradecer a todos que contribuíram para o sucesso deste evento: nossos dedicados professores, os alunos entusiasmados, os pais que apoiaram os projetos em casa e toda a equipe da Escola Sementinha.</p>
+            
+            <p>Um agradecimento especial aos nossos patrocinadores que forneceram materiais e premiações: Livraria Educativa, Laboratório Ciência Divertida e Supermercado Verde.</p>
+            
+            <p>Estamos muito orgulhosos do trabalho realizado e já começamos a planejar a Feira de Ciências do próximo ano, que promete ser ainda mais incrível!</p>
+        </div>
+        
+        <div class="post-tags">
+            <a href="#" class="post-tag">Feira de Ciências</a>
+            <a href="#" class="post-tag">Sustentabilidade</a>
+            <a href="#" class="post-tag">Projetos</a>
+            <a href="#" class="post-tag">Ciências</a>
+            <a href="#" class="post-tag">Educação Infantil</a>
+        </div>
+        
+        <div class="post-share">
+            <div class="share-title">Compartilhe:</div>
+            <div class="share-buttons">
+                <a href="#" class="share-button facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="share-button twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="share-button whatsapp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="share-button linkedin"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        
+        <div class="author-box">
+            <div class="author-image">
+                <img src="images/author.jpg" alt="Equipe Pedagógica">
+            </div>
+            <div class="author-info">
+                <h3>Equipe Pedagógica</h3>
+                <p>Nossa equipe pedagógica é formada por profissionais dedicados e apaixonados pela educação infantil. Trabalhamos juntos para criar experiências de aprendizagem significativas e estimulantes para nossos alunos.</p>
+            </div>
+        </div>
+    </article>
+    
+    <!-- Related Posts -->
+    <section class="related-posts">
+        <div class="container">
+            <h2>Posts Relacionados</h2>
+            <div class="related-posts-grid">
+                <article class="related-post">
+                    <div class="related-post-image">
+                        <img src="images/blog-post2.jpg" alt="Dicas de leitura para crianças">
+                    </div>
+                    <div class="related-post-content">
+                        <h3 class="related-post-title"><a href="#">10 Livros Infantis que Estimulam a Criatividade</a></h3>
+                        <div class="related-post-date">28 de Abril, 2025</div>
+                    </div>
+                </article>
+                
+                <article class="related-post">
+                    <div class="related-post-image">
+                        <img src="images/blog-post3.jpg" alt="Atividades para fazer em casa">
+                    </div>
+                    <div class="related-post-content">
+                        <h3 class="related-post-title"><a href="#">5 Atividades Educativas para Fazer em Casa</a></h3>
+                        <div class="related-post-date">10 de Abril, 2025</div>
+                    </div>
+                </article>
+                
+                <article class="related-post">
+                    <div class="related-post-image">
+                        <img src="images/blog-post4.jpg" alt="Alimentação saudável na infância">
+                    </div>
+                    <div class="related-post-content">
+                        <h3 class="related-post-title"><a href="#">Alimentação Saudável na Infância</a></h3>
+                        <div class="related-post-date">2 de Abril, 2025</div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <img src="images/sementinha-logo.png" alt="Logo Escola Sementinha" class="footer-logo">
+                    <p>Rua das Flores, 123 - Jardim Primavera<br>
+                    Rio de Janeiro - RJ, CEP: 22000-000</p>
+                    <p>Telefone: (21) 3333-4444<br>
+                    E-mail: contato@escolasementinha.com.br</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Siga-nos</h3>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                        <li><a href="proposta-pedagogica.html">Proposta Pedagógica</a></li>
+                        <li><a href="turmas.html">Turmas</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Escola Sementinha – Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

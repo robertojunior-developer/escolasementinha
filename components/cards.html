@@ -1,0 +1,54 @@
+<!-- Cards Component -->
+<div class="cards-container">
+    <!-- Card 1: Educação Infantil -->
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-child"></i>
+        </div>
+        <h3>Educação Infantil</h3>
+        <p>Desenvolvimento das habilidades sociais, motoras e cognitivas através de brincadeiras e atividades lúdicas.</p>
+    </div>
+    
+    <!-- Card 2: Ensino Fundamental I -->
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-book-open"></i>
+        </div>
+        <h3>Ensino Fundamental I</h3>
+        <p>Alfabetização e letramento com metodologias ativas que estimulam a curiosidade e o pensamento crítico.</p>
+    </div>
+    
+    <!-- Card 3: Atividades Extracurriculares -->
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-palette"></i>
+        </div>
+        <h3>Atividades Extracurriculares</h3>
+        <p>Música, artes, esportes e inglês para complementar a formação integral dos alunos.</p>
+    </div>
+</div>
+
+<!-- Script para incluir os cards -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Adicionar animação aos cards quando estiverem visíveis na tela
+        const cards = document.querySelectorAll('.card');
+        
+        function checkVisibility() {
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (cardTop < windowHeight - 100) {
+                    card.classList.add('animate-fade');
+                }
+            });
+        }
+        
+        // Verificar visibilidade inicial
+        window.addEventListener('load', checkVisibility);
+        
+        // Verificar visibilidade ao rolar
+        window.addEventListener('scroll', checkVisibility);
+    });
+</script>

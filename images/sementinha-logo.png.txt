@@ -1,0 +1,6 @@
+Este é um arquivo de placeholder para sementinha-logo.png.
+
+Em um ambiente de produção, você deve substituir este arquivo por uma imagem real do logotipo da escola.
+O logotipo deve ser transparente (formato PNG) para melhor integração com o design do site.
+
+Dimensões recomendadas: 200x80px

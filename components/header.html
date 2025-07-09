@@ -1,0 +1,44 @@
+<!-- Header Component -->
+<header id="header">
+    <div class="container">
+        <div class="logo">
+            <img src="../images/sementinha-logo.png" alt="Logo Escola Sementinha">
+        </div>
+        <nav>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="menu">
+                <li><a href="#inicio" class="active">Início</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#proposta">Proposta Pedagógica</a></li>
+                <li><a href="#turmas">Turmas</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#matriculas" class="btn-destaque">Matrículas Abertas</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Script para incluir o header -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Código para manipulação do header, se necessário
+        const menuToggle = document.querySelector('.menu-toggle');
+        const menu = document.querySelector('.menu');
+        
+        if (menuToggle && menu) {
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('active');
+            });
+            
+            // Fechar menu ao clicar em um link
+            const menuLinks = document.querySelectorAll('.menu a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menu.classList.remove('active');
+                });
+            });
+        }
+    });
+</script>

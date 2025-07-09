@@ -1,0 +1,6 @@
+Este é um arquivo de placeholder para crianca2.jpg.
+
+Em um ambiente de produção, você deve substituir este arquivo por uma imagem real de crianças em ambiente escolar.
+Recomenda-se uma imagem de alta qualidade mostrando crianças em atividades de aprendizagem colaborativa.
+
+Dimensões recomendadas: 800x600px
