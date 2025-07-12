@@ -13,7 +13,7 @@
         /* Estilos específicos para a página de matrículas */
         .matriculas-hero {
             height: 50vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/banner.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/matriculas.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -126,6 +126,44 @@
             margin-bottom: 20px;
         }
         
+        /* Estilo para a seção de documentação */
+        .documentacao {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .documentacao-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .documentacao-listas {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .documentacao-listas .col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .documentacao-imagem {
+            flex: 0 0 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .doc-imagem {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
         @media (max-width: 768px) {
             .etapas-container {
                 grid-template-columns: 1fr;
@@ -137,6 +175,19 @@
             
             .form-row {
                 grid-template-columns: 1fr;
+            }
+            
+            .documentacao-container {
+                flex-direction: column;
+            }
+            
+            .documentacao-listas {
+                width: 100%;
+            }
+            
+            .documentacao-imagem {
+                width: 100%;
+                margin-top: 30px;
             }
         }
     </style>
@@ -246,27 +297,32 @@
     <section class="documentacao">
         <div class="container">
             <h2 class="section-title">Documentação Necessária</h2>
-            <div class="row">
-                <div class="col">
-                    <h3>Documentos do Aluno</h3>
-                    <ul class="documentos-lista">
-                        <li>Certidão de Nascimento (cópia)</li>
-                        <li>Carteira de Identidade (cópia) - se possuir</li>
-                        <li>CPF (cópia) - se possuir</li>
-                        <li>Carteira de Vacinação (cópia)</li>
-                        <li>2 fotos 3x4 recentes</li>
-                        <li>Declaração de Transferência (para alunos a partir do 1º ano)</li>
-                        <li>Histórico Escolar (para alunos a partir do 1º ano)</li>
-                    </ul>
+            <div class="documentacao-container">
+                <div class="documentacao-listas">
+                    <div class="col">
+                        <h3>Documentos do Aluno</h3>
+                        <ul class="documentos-lista">
+                            <li>Certidão de Nascimento (cópia)</li>
+                            <li>Carteira de Identidade (cópia) - se possuir</li>
+                            <li>CPF (cópia) - se possuir</li>
+                            <li>Carteira de Vacinação (cópia)</li>
+                            <li>2 fotos 3x4 recentes</li>
+                            <li>Declaração de Transferência (para alunos a partir do 1º ano)</li>
+                            <li>Histórico Escolar (para alunos a partir do 1º ano)</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h3>Documentos do Responsável</h3>
+                        <ul class="documentos-lista">
+                            <li>Carteira de Identidade (cópia)</li>
+                            <li>CPF (cópia)</li>
+                            <li>Comprovante de Residência (cópia)</li>
+                            <li>Comprovante de Renda (para análise de bolsa, se aplicável)</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col">
-                    <h3>Documentos do Responsável</h3>
-                    <ul class="documentos-lista">
-                        <li>Carteira de Identidade (cópia)</li>
-                        <li>CPF (cópia)</li>
-                        <li>Comprovante de Residência (cópia)</li>
-                        <li>Comprovante de Renda (para análise de bolsa, se aplicável)</li>
-                    </ul>
+                <div class="documentacao-imagem">
+                    <img src="images/006.png" alt="Documentação para matrícula" class="doc-imagem">
                 </div>
             </div>
         </div>
@@ -362,10 +418,10 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-info">
-                    <img src="images/sementinha-logo.png" alt="Logo Escola Sementinha" class="footer-logo">
-                    <p>Rua das Flores, 123 - Jardim Primavera<br>
-                    Rio de Janeiro - RJ, CEP: 22000-000</p>
-                    <p>Telefone: (21) 3333-4444<br>
+                    <img src="images/logo1.png" alt="Logo Escola Sementinha" class="footer-logo">
+                    <p>Quadra 24, Lotes 43/45/47 - Etapa A<br>
+                    Valparaíso - GO, CEP: 72876-072</p>
+                    <p>Telefone: (61) 3627-5491<br>
                     E-mail: contato@escolasementinha.com.br</p>
                 </div>
                 <div class="footer-social">
